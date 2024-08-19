@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, View, Platform} from "react-native";
+import { ImageBackground, StyleSheet, View, Platform, Text, ToastAndroid} from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import {GestureHandlerRootView} from "react-native-gesture-handler"
 import * as MediaLibrary from 'expo-media-library';
@@ -7,7 +7,9 @@ import { captureRef } from 'react-native-view-shot';
 import { useState, useRef } from 'react';
 import domtoimage from 'dom-to-image';
 
-import { Button, ImageViewer, CircleButton, IconButton, EmojiPicker, EmojiList, EmojiSticker } from './components';
+import { Button, ImageViewer, CircleButton, IconButton, EmojiPicker, EmojiList, EmojiSticker, MyCheckbox, MyToastAndroid } from './components';
+
+const image = { uri: "https://docs.expo.dev/static/images/tutorial/background-image.png" };
 
 const PlaceholderImage = require("./assets/images/background-image.png");
 
@@ -18,6 +20,7 @@ export default function App() {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [showAppOptions, setShowAppOptions] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const [checked, setChecked] = useState(false);
 
   if (status === null) {
     requestPermission();
@@ -85,7 +88,6 @@ export default function App() {
   
 
   return (
-    
     <GestureHandlerRootView style={styles.container}>
       <View style={styles.imageContainer}>
         <View ref={imageRef} collapsable={false}>
@@ -111,7 +113,16 @@ export default function App() {
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
       <StatusBar style="light" />
-    </GestureHandlerRootView>
+
+      <View style={styles.appContainer}>
+        <Text style={styles.appTitle}>Checkbox Example</Text>
+        <View style={styles.checkboxContainer}>
+          <MyCheckbox onChange={() => setChecked(!checked)} checked={checked} />
+          <Text style={styles.checkboxLabel}>{`⬅️ Click!`}</Text>
+        </View>
+      </View>
+
+    </GestureHandlerRootView>  
   );
 }
 
@@ -120,6 +131,11 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#25292e',
     alignItems: 'center',
+  },
+  image:{
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center'
   },
   imageContainer: {
     flex: 1,
@@ -136,5 +152,31 @@ const styles = StyleSheet.create({
   optionsRow:{
     alignItems:"center",
     flexDirection:"row",
+  },
+  text: {
+    color:'white',
+    fontSize:42,
+    fontWeight:'bold',
+    textAlign:'center',
+    backgroundColor: '#000000a0',
+  },
+  appContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  appTitle: {
+    marginVertical: 16,
+    fontWeight: 'bold',
+    fontSize: 24,
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkboxLabel: {
+    marginLeft: 8,
+    fontWeight: '500',
+    fontSize: 18,
   },
 });
