@@ -27,37 +27,37 @@ const getAppName = () => {
 
 export default{
   name:getAppName(),
-  "expo": {
-    "name": "StickerSmash",
-    "slug": "StickerSmash",
-    "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#25292e"
+  expo: {
+    name: "StickerSmash",
+    slug: "StickerSmash",
+    version: "1.0.0",
+    orientation: "portrait",
+    icon: "./assets/icon.png",
+    userInterfaceStyle: "light",
+    splash: {
+      image: "./assets/splash.png",
+      resizeMode: "contain",
+      backgroundColor: "#25292e"
     },
-    "ios": {
-      "bundleIdentifier": getUniqueIdentifier(),
-      "supportsTablet": true,
-      "buildNumber": "1"
+    ios: {
+      bundleIdentifier: getUniqueIdentifier(),
+      supportsTablet: true,
+      buildNumber: "1"
     },
-    "android": {
-      "package": getUniqueIdentifier(),
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+    android: {
+      package: getUniqueIdentifier(),
+      adaptiveIcon: {
+        foregroundImage: "./assets/adaptive-icon.png",
+        backgroundColor: "#ffffff"
       },
-      "versionCode": "1"
+      versionCode: "1"
     },
-    "web": {
-      "favicon": "./assets/favicon.png"
+    web: {
+      favicon: "./assets/favicon.png"
     },
-    "extra": {
-      "eas": {
-        "projectId": "dd87b5be-ba67-4476-8399-f4fd359e51c7"
+    extra: {
+      eas: {
+        projectId: "dd87b5be-ba67-4476-8399-f4fd359e51c7"
       }
     }
   }

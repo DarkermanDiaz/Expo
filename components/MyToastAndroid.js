@@ -1,7 +1,7 @@
 import { StyleSheet, ToastAndroid, StatusBar } from 'react-native';
 
-export default function showToast() {
-    ToastAndroid.show('Request sent successfully!', ToastAndroid.SHORT);
+export default function MyToastAndroid(msg) {
+    ToastAndroid.show(msg, ToastAndroid.SHORT);
   }
 
 const styles = StyleSheet.create({

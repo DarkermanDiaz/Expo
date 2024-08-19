@@ -44,7 +44,8 @@ export default function App() {
       setSelectedImage(result.assets[0].uri);
       setShowAppOptions(true);
     } else {
-      alert("You did not select any image");
+      if (Platform.OS === "android"){ MyToastAndroid('You did not pick an image');}
+      else alert('You did not pick an image');
     }
   };
 
@@ -63,7 +64,8 @@ export default function App() {
 
     await MediaLibrary.saveToLibraryAsync(localUri);
     if (localUri){
-      alert("Saved");
+      if (Platform.OS === "android") {MyToastAndroid('Saved');}
+      else alert('Saved')
     }
     } catch (e) {
       console.log(e);
@@ -113,15 +115,6 @@ export default function App() {
         <EmojiList onSelect={setPickedEmoji} onCloseModal={onModalClose} />
       </EmojiPicker>
       <StatusBar style="light" />
-
-      <View style={styles.appContainer}>
-        <Text style={styles.appTitle}>Checkbox Example</Text>
-        <View style={styles.checkboxContainer}>
-          <MyCheckbox onChange={() => setChecked(!checked)} checked={checked} />
-          <Text style={styles.checkboxLabel}>{`⬅️ Click!`}</Text>
-        </View>
-      </View>
-
     </GestureHandlerRootView>  
   );
 }
